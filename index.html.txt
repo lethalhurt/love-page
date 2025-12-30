@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>给你的专属告白</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Microsoft YaHei", sans-serif;
+            overflow: hidden;
+        }
+        .love-box {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px 60px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(255, 154, 158, 0.5);
+            text-align: center;
+            position: relative;
+        }
+        .love-box h1 {
+            color: #e63946;
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        .love-box p {
+            color: #333;
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+        .love-btn {
+            padding: 12px 30px;
+            background: #e63946;
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .love-btn:hover {
+            background: #d62828;
+            transform: scale(1.05);
+        }
+        /* 爱心动画 */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #e63946;
+            transform: rotate(45deg);
+            opacity: 0.7;
+            animation: float 3s ease-in-out infinite;
+        }
+        .heart::before, .heart::after {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #e63946;
+            border-radius: 50%;
+        }
+        .heart::before {
+            top: -10px;
+            left: 0;
+        }
+        .heart::after {
+            top: 0;
+            left: -10px;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: rotate(45deg) translateY(0);
+            }
+            50% {
+                transform: rotate(45deg) translateY(-20px);
+            }
+        }
+        /* 随机爱心生成 */
+        .heart:nth-child(1) {
+            top: -20px;
+            left: 20px;
+            animation-delay: 0s;
+        }
+        .heart:nth-child(2) {
+            top: -30px;
+            right: 20px;
+            animation-delay: 0.5s;
+        }
+        .heart:nth-child(3) {
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            animation-delay: 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="love-box">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <h1>致我最爱的你</h1>
+        <p>亲爱的王佳丽宝宝<br>2026年<br>我想和你一起度过</p >
+        <button class="love-btn" onclick="alert('王佳丽宝宝，往后的岁岁年年，我都陪你～')">点击接收我的心意</button>
+    </div>
+
+    <script>
+        // 生成更多随机爱心
+        for (let i = 0; i < 10; i++) {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.top = Math.random() * 100 + "vh";
+            heart.style.animationDelay = Math.random() * 3 + "s";
+            heart.style.opacity = Math.random() * 0.5 + 0.3;
+            heart.style.transform = `rotate(45deg) scale(${Math.random() * 0.5 + 0.5})`;
+            document.body.appendChild(heart);
+        }
+    </script>
+</body>
+</html>
